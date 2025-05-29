@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar Sesión - Mentor Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes buttonHover {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .fade-in { animation: fadeIn 1s ease-in-out; }
+    .slide-in { animation: slideIn 1s ease-in-out; }
+    .hover-animate:hover { animation: buttonHover 0.5s ease-in-out; }
+  </style>
+</head>
+<body class="bg-[#01414C] text-white min-h-screen">
+
+  <!-- Navbar Mentor Pro -->
+  <header class="flex flex-col md:flex-row items-center justify-between p-4 bg-[#01414C] shadow fade-in">
+    <div class="flex flex-col items-center md:flex-row md:items-center md:space-x-4 text-center md:text-left">
+      <h1 class="text-4xl font-bold text-white">Mentor Pro</h1>
+    </div>
+    <nav class="flex space-x-4 mt-2 md:mt-0">
+      <a href="index.html" class="text-sm hover:text-[#00A0C6] transition duration-300">Inicio</a>
+      <a href="#" class="text-sm hover:text-[#00A0C6] transition duration-300">Servicios</a>
+      <a href="#" class="text-sm hover:text-[#00A0C6] transition duration-300">Testimonios</a>
+      <a href="#" class="text-sm hover:text-[#00A0C6] transition duration-300">Contacto</a>
+    </nav>
+    <div class="flex space-x-2 mt-2 md:mt-0">
+      <button onclick="mostrarFormulario('login')" class="text-[#00A0C6] border border-[#00A0C6] px-3 py-1 rounded hover:bg-[#00A0C6] hover:text-white transition duration-300 hover-animate">Iniciar Sesión</button>
+      <button onclick="mostrarFormulario('registro')" class="bg-[#00A0C6] text-white px-3 py-1 rounded hover:bg-[#0085a5] transition duration-300 hover-animate">Registrarse</button>
+    </div>
+  </header>
+
+  <!-- Contenedor Login/Registro -->
+  <main class="max-w-md mx-auto mt-10 bg-white text-[#01414C] p-8 rounded shadow-lg slide-in">
+
+    <!-- Botones para alternar -->
+    <div class="flex justify-center mb-6">
+      <button onclick="mostrarFormulario('login')" class="mx-2 px-4 py-2 rounded border bg-[#00A0C6] text-white">Iniciar Sesión</button>
+      <button onclick="mostrarFormulario('registro')" class="mx-2 px-4 py-2 rounded border border-[#00A0C6] text-[#00A0C6]">Registrarse</button>
+    </div>
+
+    <!-- Formulario de Login -->
+    <div id="form-login">
+      <h2 class="text-2xl font-bold text-center mb-4">Iniciar Sesión</h2>
+      <form onsubmit="return validarLogin(event)">
+        <div class="mb-4">
+          <label for="usuario" class="block text-sm font-medium">Nombre de usuario</label>
+          <input type="text" id="usuario" class="w-full p-2 border rounded" required />
+        </div>
+        <div class="mb-4">
+          <label for="correo" class="block text-sm font-medium">Correo electrónico</label>
+          <input type="email" id="correo" class="w-full p-2 border rounded" required />
+        </div>
+        <div class="mb-4">
+          <label for="clave" class="block text-sm font-medium">Contraseña</label>
+          <input type="password" id="clave" class="w-full p-2 border rounded" required />
+        </div>
+        <div class="mb-4 flex items-center">
+          <input type="checkbox" id="esEmpresa" class="mr-2">
+          <label for="esEmpresa" class="text-sm">Ingresar como empresa</label>
+        </div>
+        <button type="submit" class="w-full bg-[#00A0C6] text-white py-2 rounded hover:bg-[#0085a5] transition">Acceder</button>
+      </form>
+    </div>
+
+    <!-- Formulario de Registro -->
+    <div id="form-registro" class="hidden">
+      <h2 class="text-2xl font-bold text-center mb-4">Registrarse</h2>
+      <form onsubmit="return registrarUsuario(event)">
+        <div class="mb-4">
+          <label for="reg_usuario" class="block text-sm font-medium">Nombre de usuario</label>
+          <input type="text" id="reg_usuario" class="w-full p-2 border rounded" required />
+        </div>
+        <div class="mb-4">
+          <label for="reg_correo" class="block text-sm font-medium">Correo electrónico</label>
+          <input type="email" id="reg_correo" class="w-full p-2 border rounded" required />
+        </div>
+        <div class="mb-4">
+          <label for="reg_clave" class="block text-sm font-medium">Contraseña</label>
+          <input type="password" id="reg_clave" class="w-full p-2 border rounded" required />
+        </div>
+        <div class="mb-4 flex items-center">
+          <input type="checkbox" id="reg_esEmpresa" class="mr-2">
+          <label for="reg_esEmpresa" class="text-sm">Registrarse como empresa</label>
+        </div>
+        <button type="submit" class="w-full bg-[#00A0C6] text-white py-2 rounded hover:bg-[#0085a5] transition">Registrarse</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- JavaScript -->
+  <script>
+    function mostrarFormulario(formulario) {
+      document.getElementById('form-login').style.display = formulario === 'login' ? 'block' : 'none';
+      document.getElementById('form-registro').style.display = formulario === 'registro' ? 'block' : 'none';
+    }
+
+    function validarLogin(event) {
+      event.preventDefault();
+      const nombreUsuario = document.getElementById("usuario").value;
+      const correo = document.getElementById("correo").value;
+      const clave = document.getElementById("clave").value;
+      const esEmpresa = document.getElementById("esEmpresa").checked;
+
+      const usuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
+
+      const usuarioEncontrado = usuarios.find(user =>
+        user.usuario === nombreUsuario &&
+        user.correo === correo &&
+        user.clave === clave &&
+        user.esEmpresa === esEmpresa
+      );
+
+      if (usuarioEncontrado) {
+        sessionStorage.setItem("usuario", nombreUsuario);
+        window.location.href = esEmpresa ? "perfil_empresa.html" : "perfil_bienvenida.html";
+      } else {
+        alert("Credenciales incorrectas o usuario no registrado.");
+      }
+
+      return false;
+    }
+
+    function registrarUsuario(event) {
+      event.preventDefault();
+
+      const usuario = document.getElementById("reg_usuario").value;
+      const correo = document.getElementById("reg_correo").value;
+      const clave = document.getElementById("reg_clave").value;
+      const esEmpresa = document.getElementById("reg_esEmpresa").checked;
+
+      const nuevoUsuario = { usuario, correo, clave, esEmpresa };
+      const usuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
+
+      const existe = usuarios.find(u => u.usuario === usuario || u.correo === correo);
+      if (existe) {
+        alert("Este usuario o correo ya está registrado.");
+        return;
+      }
+
+      usuarios.push(nuevoUsuario);
+      localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+      alert("¡Registro exitoso! Ahora puedes iniciar sesión.");
+      mostrarFormulario('login');
+    }
+
+    // Mostrar login al cargar
+    window.onload = () => {
+  const hash = window.location.hash;
+  if (hash === "#registro") {
+    mostrarFormulario("registro");
+  } else {
+    mostrarFormulario("login");
+  }
+};
+  </script>
+</body>
+</html>
