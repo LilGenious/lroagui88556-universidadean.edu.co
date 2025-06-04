@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Iniciar Sesión / Registrarse</title>
+        <link rel="icon" type="image/png" href="./IMAGENES/favicon-16x16.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea, #001a49);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+  }
+
+  .container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 420px;
+    overflow: hidden;
+  }
+
+  .header {
+    background: #001a49;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+  }
+  .header h1 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.8rem;
+  }
+
+  .tabs {
+    display: flex;
+    background: #f4f4f4;
+  }
+  .tab {
+    flex: 1;
+    text-align: center;
+    padding: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s, color 0.3s;
+    user-select: none;
+  }
+  .tab.active {
+    background: #001a49;
+    color: white;
+  }
+  .tab:not(.active):hover {
+    background: #d9e0f8;
+  }
+
+  form {
+    padding: 2rem;
+  }
+  label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+  }
+  input, select {
+    width: 100%;
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    border: 1.5px solid #ccc;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+  }
+  input:focus {
+    outline: none;
+    border-color: #001a49;
+    box-shadow: 0 0 8px rgba(0,26,73,0.3);
+  }
+  button {
+    width: 100%;
+    background: #001a49;
+    color: white;
+    border: none;
+    padding: 0.9rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+  button:hover {
+    background: #003366;
+  }
+  .message {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 0.5rem;
+    color: #001a49;
+  }
+</style>
+</head>
+
+<body>
+    <main>
+<header style="width:100%; background:#23272f; color:white; padding:0.5rem 0; box-shadow:0 2px 8px rgba(0,0,0,0.08); position:absolute; top:0; left:0; font-family:'Poppins',sans-serif;">
+    <nav style="display:flex; align-items:center; max-width:1200px; margin:0 auto; padding:0 2rem;">
+        <span style="font-size:1.5rem; font-weight:700; letter-spacing:1px; margin-right:auto;">MENTOR PRO</span>
+        <ul style="display:flex; list-style:none; margin:0; padding:0; gap:1.5rem; margin-left:auto;">
+            <li class="nav__items">
+                <a href="index.html" class="nav__links" style="color:white; text-decoration:none; font-weight:500; transition:color 0.2s; font-family:'Poppins',sans-serif;">Inicio</a>
+            </li>
+            <li class="nav__items">
+                <a href="login.html" class="nav__links" style="color:white; text-decoration:none; font-weight:500; transition:color 0.2s; font-family:'Poppins',sans-serif;">Registrate</a>
+            </li>
+            <li class="nav__items">
+                <a href="info.html" class="nav__links" style="color:white; text-decoration:none; font-weight:500; transition:color 0.2s; font-family:'Poppins',sans-serif;">Sobre nuestros Empleados</a>
+            </li>
+            <li class="nav__items">
+
+            </li>
+        </ul>
+    </nav>
+</header>
+<br><br><br>
+  <div class="container" role="main">
+    <div class="header">
+      <h1>Iniciar Sesión / Registrarse</h1>
+    </div>
+    <div class="tabs" role="tablist">
+      <div class="tab active" id="login-tab" role="tab" tabindex="0" aria-selected="true" aria-controls="login-form">Iniciar Sesión</div>
+      <div class="tab" id="register-tab" role="tab" tabindex="0" aria-selected="false" aria-controls="register-form">Registrarse</div>
+    </div>
+    <form id="login-form" role="tabpanel" aria-labelledby="login-tab" autocomplete="off" style="display: block;">
+      <label for="login-email">Correo Electrónico</label>
+      <input type="email" id="login-email" name="login-email" placeholder="correo@ejemplo.com" required />
+
+      <label for="login-password">Contraseña</label>
+      <input type="password" id="login-password" name="login-password" placeholder="Contraseña" required />
+
+      <button type="submit">Iniciar Sesión</button>
+      <div class="message" id="login-message" aria-live="polite"></div>
+    </form>
+
+    <form id="register-form" role="tabpanel" aria-labelledby="register-tab" autocomplete="off" style="display: none;">
+      <label for="reg-name">Nombre Completo</label>
+      <input type="text" id="reg-name" name="reg-name" placeholder="Tu nombre completo" required />
+
+      <label for="reg-email">Correo Electrónico</label>
+      <input type="email" id="reg-email" name="reg-email" placeholder="correo@ejemplo.com" required />
+
+      <label for="reg-password">Contraseña</label>
+      <input type="password" id="reg-password" name="reg-password" placeholder="Contraseña" required />
+
+      <label for="reg-phone">Número de Teléfono</label>
+      <input type="tel" id="reg-phone" name="reg-phone" placeholder="(opcional)" />
+
+      <label for="reg-gender">Género</label>
+    <select id="reg-gender" name="reg-gender" required>
+      <option value="" disabled selected>Selecciona tu género</option>
+      <option value="Masculino">Masculino</option>
+      <option value="Femenino">Femenino</option>
+      <option value="Otro">Otro</option>
+      <option value="Prefiero no decir">Prefiero no decir</option>
+    </select>
+
+    <button type="submit">Registrarse</button>
+    <div class="message" id="register-message" aria-live="polite"></div>
+    </form>
+  </div>
+
+  <script>
+    // Switching tabs
+    const loginTab = document.getElementById('login-tab');
+    const registerTab = document.getElementById('register-tab');
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+    const container = document.querySelector('.container');
+
+    loginTab.addEventListener('click', () => {
+    loginTab.classList.add('active');
+    registerTab.classList.remove('active');
+    loginForm.style.display = 'block';
+    registerForm.style.display = 'none';
+    // Restaura el alto original
+    container.style.marginTop = '';
+    clearMessages();
+    });
+    registerTab.addEventListener('click', () => {
+    registerTab.classList.add('active');
+    loginTab.classList.remove('active');
+    registerForm.style.display = 'block';
+    loginForm.style.display = 'none';
+    // Extiende el div para evitar que el header lo opaque
+    container.style.marginTop = '60px';
+    clearMessages();
+    });
+
+    // Keyboard accessibility for tabs
+    loginTab.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' '){
+      e.preventDefault();
+      loginTab.click();
+    }
+    });
+    registerTab.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' '){
+      e.preventDefault();
+      registerTab.click();
+    }
+    });
+
+    // Simulated DB: users stored in localStorage as array of objects
+    function getUsers() {
+    const users = localStorage.getItem('users');
+    return users ? JSON.parse(users) : [];
+    }
+    function saveUsers(users) {
+    localStorage.setItem('users', JSON.stringify(users));
+    }
+
+    // Register Form Submission
+    registerForm.addEventListener('submit', function(event){
+    event.preventDefault();
+
+    // Gather fields
+    const name = this['reg-name'].value.trim();
+    const email = this['reg-email'].value.trim().toLowerCase();
+    const password = this['reg-password'].value;
+    const phone = this['reg-phone'].value.trim();
+    const gender = this['reg-gender'].value;
+
+    // Validate required fields
+    if (!name || !email || !password || !gender) {
+      alert('Por favor, llena todos los campos requeridos.');
+      return;
+    }
+
+    // Check if email already registered
+    const users = getUsers();
+    if(users.find(u => u.email === email)){
+      alert('Este correo electrónico ya está registrado. Por favor usa otro.');
+      return;
+    }
+
+    // Save user to "database"
+    users.push({name, email, password, phone, gender});
+    saveUsers(users);
+
+    this.reset();
+    alert('Registro exitoso. Ahora puedes iniciar sesión.');
+    // Switch to login tab after registration
+    loginTab.click();
+    });
+
+    // Login Form Submission
+    loginForm.addEventListener('submit', function(event){
+    event.preventDefault();
+
+    const email = this['login-email'].value.trim().toLowerCase();
+    const password = this['login-password'].value;
+
+    if (!email || !password){
+      alert('Por favor, llena ambos campos para iniciar sesión.');
+      return;
+    }
+
+    const users = getUsers();
+    const user = users.find(u => u.email === email);
+
+    if(!user){
+      alert('Correo no registrado. Por favor, regístrate primero.');
+      return;
+    }
+
+    if(user.password !== password){
+      alert('Contraseña incorrecta.');
+      return;
+    }
+
+    alert(`Bienvenido, ${user.name}! Has iniciado sesión correctamente.`);
+    // Optionally do post-login things here, like redirect or clear form
+    this.reset();
+    });
+
+    function clearMessages(){
+    document.getElementById('login-message').textContent = '';
+    document.getElementById('register-message').textContent = '';
+    }
+  </script>
+  </main>
+  
+</body>
+
+
+</html>
+

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sobre Nuestros Empleados</title>
+<!-- Import Poppins font from Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./css/normalize.css">
+<link rel="stylesheet" href="./css/estilos.css">
+        <link rel="icon" type="image/png" href="./IMAGENES/favicon-16x16.png">
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #e5e5f7;
+    color: #1D293F;
+  }
+  .employees-section {
+    padding: 3rem 2rem;
+    background: #fff;
+    color: #1D293F;
+    text-align: center;
+  }
+  .employees-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .employees-section p {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #55596a;
+  }
+  .employee-cards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .employee-card {
+    background: #e5e5f7;
+    color: #1D293F;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(29, 41, 63, 0.25);
+    width: 220px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  .employee-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(29, 41, 63, 0.4);
+  }
+  .employee-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #1D293F;
+    margin: 0 auto 1rem;
+    object-fit: cover;
+    box-shadow: 0 2px 10px rgba(29, 41, 63, 0.3);
+  }
+  .employee-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .employee-role {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #55596a;
+    margin-bottom: 0.7rem;
+  }
+  .employee-bio {
+    font-size: 0.9rem;
+    color: #66687d;
+    line-height: 1.4;
+    min-height: 60px;
+  }
+  @media (max-width: 720px) {
+    .employee-cards {
+      justify-content: center;
+      gap: 1.2rem;
+    }
+    .employee-card {
+      width: 90%;
+      max-width: 300px;
+    }
+  }
+
+  /* New Form Section Styles */
+  .application-section {
+    padding: 3rem 2rem;
+    background-color: #e5e5f7;
+    background-image:
+      repeating-radial-gradient(circle at 0 0, transparent 0, #e5e5f7 32px),
+      repeating-linear-gradient(#b3cfff55, #b3cfff);
+    overflow: hidden;
+    text-align: center;
+    color: #1D293F;
+  }
+  .application-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+  }
+  .application-section p {
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #334466;
+  }
+  form.application-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgb(29 41 63 / 0.15);
+  }
+  form.application-form label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #1D293F;
+  }
+  form.application-form input,
+  form.application-form textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.6rem 0.9rem;
+    margin-bottom: 1.2rem;
+    border-radius: 8px;
+    border: 1.5px solid #b3cfff;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+  }
+  form.application-form input:focus,
+  form.application-form textarea:focus {
+    border-color: #1D293F;
+    outline: none;
+  }
+  form.application-form textarea {
+    min-height: 100px;
+  }
+  .phone-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .flag {
+    font-size: 1.8rem;
+    user-select: none;
+  }
+  form.application-form button {
+    background-color: #1D293F;
+    color: #e5e5f7;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  form.application-form button:hover,
+  form.application-form button:focus {
+    background-color: #37475a;
+  }
+</style>
+</head>
+
+<body>
+    <header class="hero">
+        <nav class="nav container">
+         <div class="nav__logo">
+          <h2 class="nav__title">MENTOR PRO</h2>
+         </div>
+
+         <ul class="nav__link nav__link--menu">
+          <li class="nav__items">
+              <a href="index.html" class="nav__links">Inicio</a>
+          </li>
+          <li class="nav__items">
+              <a href="register.html" class="nav__links">Registrate</a>
+          </li>
+          <li class="nav__items">
+              <a href="info.html" class="nav__links">Sobre nuestros Empleados</a>
+          </li>    <li class="nav__items"></li>
+
+          </li>
+
+          <img src="./images/close.svg" class="nav__close">
+         </ul>
+
+         <div class="nav__menu">
+          <img src="./images/menu.svg" class="nav__img">
+         </div>
+        </nav>
+        <style>
+         .hero {
+          position: relative;
+          overflow: hidden;
+         }
+         .hero::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: linear-gradient(180deg,#0000008c 0%,#0000008c 100%), url('./IMAGENES/equipo\ de\ trabajo.jpg');
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center top 30%;
+          z-index: -1;
+         }
+        </style>
+
+            <section class="hero__container container">
+                <h1 class="hero__title">La experiencia que impulsa tu empresa</h1>
+                <p class="hero__paragraph">Conecta con profesionales mayores, certificados y listos para aportar su conocimiento. Valora el talento senior y potencia tu equipo con experiencia comprobada.</p>
+                <a href="#" class="cta">Descubre el valor de la experiencia</a>
+            </section>
+        </header>
+
+  <section class="employees-section" aria-labelledby="employees-heading">
+    <h2 id="employees-heading">Nuestros Empleados</h2>
+    <p>
+      En nuestra empresa, contamos con un equipo apasionado y comprometido, dedicado a brindar el mejor servicio y la más alta calidad en cada proyecto.
+    </p>
+    <div class="employee-cards">
+      <article class="employee-card" role="group" aria-label="Empleado: Ana Gómez, Directora de Marketing">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Foto de Ana Gómez" class="employee-photo" />
+        <h3 class="employee-name">Ana Gómez</h3>
+        <p class="employee-role">Directora de Marketing</p>
+        <p class="employee-bio">Experta en estrategias digitales y comunicación, con más de 10 años llevando marcas al éxito.</p>
+      </article>
+      <article class="employee-card" role="group" aria-label="Empleado: Carlos Pérez, Ingeniero de Software">
+        <img src="https://randomuser.me/api/portraits/men/27.jpg" alt="Foto de Carlos Pérez" class="employee-photo" />
+        <h3 class="employee-name">Carlos Pérez</h3>
+        <p class="employee-role">Ingeniero de Software</p>
+        <p class="employee-bio">Apasionado por el desarrollo de soluciones innovadoras y eficientes que superan expectativas.</p>
+      </article>
+      <article class="employee-card" role="group" aria-label="Empleado: Lucia Martínez, Gerente de Proyectos">
+        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Foto de Lucia Martínez" class="employee-photo" />
+        <h3 class="employee-name">Lucia Martínez</h3>
+        <p class="employee-role">Gerente de Proyectos</p>
+        <p class="employee-bio">Organizadora excepcional que asegura la entrega puntual y calidad en cada iniciativa.</p>
+      </article>
+      <article class="employee-card" role="group" aria-label="Empleado: Daniel Rojas, Diseñador UX">
+        <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Foto de Daniel Rojas" class="employee-photo" />
+        <h3 class="employee-name">Daniel Rojas</h3>
+        <p class="employee-role">Diseñador UX</p>
+        <p class="employee-bio">Diseñador creativo enfocado en experiencias de usuario intuitivas y atractivas.</p>
+      </article>
+      <article class="employee-card" role="group" aria-label="Empleado: Maria Torres, Especialista en Atención al Cliente">
+        <img src="https://randomuser.me/api/portraits/women/15.jpg" alt="Foto de Maria Torres" class="employee-photo" />
+        <h3 class="employee-name">Maria Torres</h3>
+        <p class="employee-role">Especialista en Atención al Cliente</p>
+        <p class="employee-bio">Con una sonrisa siempre lista, atiende las necesidades del cliente con excelencia y empatía.</p>
+      </article>
+      <article class="employee-card" role="group" aria-label="Empleado: Rodrigo Salazar, Analista de Datos">
+        <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Foto de Rodrigo Salazar" class="employee-photo" />
+        <h3 class="employee-name">Rodrigo Salazar</h3>
+        <p class="employee-role">Analista de Datos</p>
+        <p class="employee-bio">Especialista en interpretar datos complejos para generar insights y tomar decisiones acertadas.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="application-section" aria-labelledby="application-heading">
+    <h2 id="application-heading">Postúlate para recibir ofertas de trabajo</h2>
+    <p>
+      Completa el formulario y mantente informado sobre nuestras vacantes y oportunidades laborales.
+    </p>
+    <form class="application-form" action="#" method="POST" novalidate id="jobApplicationForm">
+      <label for="name">Nombre Completo</label>
+      <input type="text" id="name" name="name" placeholder="Tu nombre completo" required />
+
+      <label for="email">Correo Electrónico</label>
+      <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required />
+
+      <label for="phone">Teléfono</label>
+      <div class="phone-group">
+        <span class="flag" aria-label="Bandera de Colombia" title="Colombia">🇨🇴</span>
+        <input type="tel" id="phone" name="phone" placeholder="+57 300 123 4567" />
+      </div>
+
+      <label for="message">¿En qué áreas te gustaría trabajar?</label>
+      <textarea id="message" name="message" placeholder="Cuéntanos tus intereses o experiencia" rows="4"></textarea>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <script>
+    document.getElementById('jobApplicationForm').addEventListener('submit', function(event) {
+      event.preventDefault();  // Prevent default submission
+
+      const name = this.name.value.trim();
+      const email = this.email.value.trim();
+      const phone = this.phone.value.trim();
+      const message = this.message.value.trim();
+
+      let errorFields = [];
+
+      // Check if required fields are filled
+      if (!name) errorFields.push('Nombre Completo');
+      if (!email) errorFields.push('Correo Electrónico');
+
+      // Email validation: must contain '@'
+      if(email && !email.includes('@')) {
+        alert('El correo electrónico debe contener un símbolo "@" válido.');
+        this.email.focus();
+        return;
+      }
+
+      // Phone validation: if filled, must start with "+57"
+      if(phone && !phone.startsWith('+57')) {
+        alert('El teléfono debe comenzar con el código de país "+57" (Colombia).');
+        this.phone.focus();
+        return;
+      }
+
+      // If any required fields missing, alert with list
+      if (errorFields.length > 0) {
+        alert('Por favor, completa los siguientes campos obligatorios:\n' + errorFields.join('\n'));
+        return;
+      }
+
+      // If all validations pass:
+      alert('Formulario enviado con éxito. ¡Gracias por postularte!');
+      this.reset();
+    });
+  </script>
+</body>
+ <footer class="footer">
+            <section class="footer__container container">
+                <nav class="nav nav--footer">
+                    <h2 class="footer__title">MENTOR PRO</h2>
+
+                    <ul class="nav__link nav__link--footer">
+                        <li class="nav__items">
+                            <a href="#" class="nav__links">Inicio</a>
+                        </li>
+                        <li class="nav__items">
+                            <a href="#" class="nav__links">Registrate</a>
+                        </li>
+                        <li class="nav__items">
+                            <a href="#" class="nav__links">Sobre nuestros Empleados</a>
+                        </li>
+                        <li class="nav__items">
+
+                        </li>
+                    </ul>
+                </nav>
+
+                <form class="footer__form" action="https://formspree.io/f/mknkkrkj" method="POST">
+                    <h2 class="footer__newsletter">Registrate y haz parte de MENTOR PRO</h2>
+                    <div class="footer__inputs">
+                        <input type="email" placeholder="Email:" class="footer__input" name="_replyto">
+                        <input type="submit" value="Registrate" class="footer__submit">
+                    </div>
+                </form>
+            </section>
+
+            <section class="footer__copy container">
+                <div class="footer__social">
+                    <a href="#" class="footer__icons"><img src="./images/facebook.svg" class="footer__img"></a>
+                    <a href="#" class="footer__icons"><img src="./images/twitter.svg" class="footer__img"></a>
+                    <a href="#" class="footer__icons"><img src="./images/youtube.svg" class="footer__img"></a>
+                </div>
+
+                <h3 class="footer__copyright">Derechos reservados &copy; GRUPO 5</h3>
+            </section>
+        </footer>
+        <script src="./js/menu.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</html>
+
